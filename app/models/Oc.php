@@ -1,3 +1,5 @@
+<?php
+
 class Oc extends Eloquent
 {
     public $table = 'oc';

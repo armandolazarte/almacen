@@ -1,3 +1,5 @@
+<?php
+
 class Proveedor extends Eloquent
 {
     public $table = 'proveedores';

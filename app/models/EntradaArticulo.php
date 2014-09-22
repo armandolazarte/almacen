@@ -1,3 +1,5 @@
+<?php
+
 class EntradaArticulo extends Eloquent
 {
     

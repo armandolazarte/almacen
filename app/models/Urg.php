@@ -1,3 +1,5 @@
+<?php
+
 class Urg extends Eloquent
 {
     public $table = 'urg';
