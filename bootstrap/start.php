@@ -26,7 +26,8 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('vm-0.samuelmg.koding.kd.io'),
+	'local' => array('homestead'),
+	'koding' => array('vm-0.samuelmg.koding.kd.io'),
 
 ));
 
