@@ -13,6 +13,17 @@
 
 Route::get('/', function()
 {
-//	return View::make('hello');//Original
     return View::make('inicio');
+});
+
+Route::get('/entradas', function()
+{
+    return View::make('entradas');
+});
+Route::get('/entradas/nueva', 'OcController@listarOc');
+
+Route::get('/prueba', 'OcController@consultarOcExternas');
+Route::get('/hello', function()
+{
+	return View::make('hello');//Original
 });

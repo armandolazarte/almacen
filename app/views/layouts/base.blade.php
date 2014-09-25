@@ -17,8 +17,8 @@
         
 @section('navegacion')
         <ul class="barra_botones">
-            <li><a class="button_seleccionado" href="escolar.html">Inicio</a></li>
-            <li><a class="button_barra" href="#">Entradas</a></li>
+            <li><a class="button_seleccionado" href="/">Inicio</a></li>
+            <li><a class="button_barra" href="/entradas">Entradas</a></li>
             <li><a class="button_barra" href="#">Salidas</a></li>
             <li><a class="button_barra" href="#">Reportes</a></li>
         </ul>
