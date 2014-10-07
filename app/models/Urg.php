@@ -15,4 +15,10 @@ class Urg extends Eloquent
     {
         return $this->hasMany('Salida');
     }
+    
+    //Urg __has_many__ Oc
+    public function oc()
+    {
+        return $this->hasMany('Oc');
+    }
 }

@@ -9,4 +9,10 @@ class Proveedor extends Eloquent
     {
         return $this->hasMany('Entrada');
     }
+    
+    //Proveedor __has_many__ Oc
+    public function oc()
+    {
+        return $this->hasMany('Oc');
+    }
 }
