@@ -25,7 +25,7 @@ class CrearTablasWarper extends Migration {
 		    $tbl->increments('id');
 		    $tbl->integer('proveedor_id')->unique()->unsigned();
 		    $tbl->string('d_proveedor');
-		    $tbl->string('rfc', 15)->unique();
+		    $tbl->string('rfc', 15);
 		    $tbl->timestamps();
 		});
 		
@@ -36,6 +36,7 @@ class CrearTablasWarper extends Migration {
 		    $tbl->date('fecha_oc');
 		    $tbl->integer('req')->unsigned();
 		    $tbl->string('db_origen', 10);
+		    $tbl->integer('proveedor_id')->unsigned();
 		    $tbl->integer('urg_id');
 		    $tbl->string('estatus', 20);
 		    $tbl->timestamps();
@@ -53,8 +54,6 @@ class CrearTablasWarper extends Migration {
 		    $tbl->tinyInteger('impuesto')->unsigned;
 		    $tbl->string('unidad', 12);
 		    $tbl->timestamps();
-		    
-		    $tbl->foreign('oc_id')->references('id')->on('oc')->onUpdate('cascade');
 		});
 	}
 

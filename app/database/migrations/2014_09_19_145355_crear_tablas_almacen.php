@@ -35,9 +35,6 @@ class CrearTablasAlmacen extends Migration {
 		    $tbl->text('cmt');
 		    $tbl->integer('usr_id')->unsigned();
 		    $tbl->timestamps();
-		    
-		    $tbl->foreign('urg_id')->references('id')->on('urg')->onUpdate('cascade');
-		    $tbl->foreign('proveedor_id')->references('id')->on('proveedores')->onUpdate('cascade');
 		});
 		
 		Schema::create('entradas_articulos', function($tbl)
@@ -49,9 +46,6 @@ class CrearTablasAlmacen extends Migration {
 		    $tbl->decimal('costo', 15, 3)->unsigned();
 		    $tbl->tinyInteger('impuesto')->unsigned;
 		    $tbl->timestamps();
-		    
-		    $tbl->foreign('entrada_id')->references('id')->on('entradas')->onUpdate('cascade');
-		    $tbl->foreign('articulo_id')->references('id')->on('articulos')->onUpdate('cascade');
 		});
 		
 		Schema::create('salidas', function($tbl)
@@ -63,9 +57,6 @@ class CrearTablasAlmacen extends Migration {
 		    $tbl->text('cmt');
 		    $tbl->integer('usr_id')->unsigned();
 		    $tbl->timestamps();
-		    
-		    $tbl->foreign('entrada_id')->references('id')->on('entradas')->onUpdate('cascade');
-		    $tbl->foreign('urg_id')->references('id')->on('urg')->onUpdate('cascade');
 		});
 		
 		Schema::create('salidas_articulos', function($tbl)
@@ -75,9 +66,6 @@ class CrearTablasAlmacen extends Migration {
 		    $tbl->integer('articulo_id')->unsigned();
 		    $tbl->decimal('cantidad', 15, 3)->unsigned();
 		    $tbl->timestamps();
-		    
-		    $tbl->foreign('salida_id')->references('id')->on('salidas')->onUpdate('cascade');
-		    $tbl->foreign('articulo_id')->references('id')->on('articulos')->onUpdate('cascade');
 		});
 	}
 
@@ -93,7 +81,6 @@ class CrearTablasAlmacen extends Migration {
 		Schema::drop('entradas_articulos');
 		Schema::drop('salidas');
 		Schema::drop('salidas_articulos');
-		
 	}
 
 }
