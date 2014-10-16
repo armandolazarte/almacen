@@ -67,6 +67,17 @@ return array(
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
 		),
+		
+		'sgf_benef' => array(
+			'driver'    => 'mysql',
+			'host'      => 'localhost',
+			'database'  => 'sgf_benef',
+			'username'  => 'gama',
+			'password'  => '',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		),
 
 	),
 
