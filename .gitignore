@@ -1,5 +1,7 @@
 /bootstrap/compiled.php
 /vendor
+/.c9
+/.tempDB
 composer.phar
 .env.*.php
 .env.php

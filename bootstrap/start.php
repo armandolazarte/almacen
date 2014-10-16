@@ -28,6 +28,7 @@ $env = $app->detectEnvironment(array(
 
 	'local' => array('homestead'),
 	'koding' => array('vm-0.samuelmg.koding.kd.io'),
+	'c9development' => array('samuelmg-almacen-1026762'),
 
 ));
 
