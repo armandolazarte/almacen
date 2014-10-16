@@ -20,10 +20,9 @@ Route::get('/entradas', function()
 {
     return View::make('entradas');
 });
-Route::get('/entradas/nueva', 'OcController@listarOc');
+Route::get('/entradas/nueva', 'EntradaController@nueva');
 
-Route::get('/prueba', 'OcController@consultarOcExternas');
-Route::get('/hello', function()
+Route::get('/prueba', function()
 {
-	return View::make('hello');//Original
+     return 'PRUEBA';
 });
