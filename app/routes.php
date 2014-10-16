@@ -16,13 +16,21 @@ Route::get('/', function()
     return View::make('inicio');
 });
 
-Route::get('/entradas', function()
+Route::group(array('prefix' => 'entrada'), function()
 {
-    return View::make('entradas');
+    Route::get('/', function()
+    {
+        return View::make('entrada');
+    });
+    
+    //Nueva Entrada a partir de Orden de Compra
+    Route::get('/nueva', 'EntradaController@nueva');
+    Route::post('/nueva/articulos', 'EntradaController@selArticulos');
+    Route::post('/nueva', 'EntradaController@crearEntrada');
+    
 });
-Route::get('/entradas/nueva', 'EntradaController@nueva');
 
 Route::get('/prueba', function()
 {
-     return 'PRUEBA';
+     return 'Prueba';
 });
