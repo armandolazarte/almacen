@@ -16,8 +16,6 @@ class CrearTablasAlmacen extends Migration {
 		{
 		    $tbl->increments('id');
 		    $tbl->text('articulo');
-		    $tbl->string('cta', 30);
-		    $tbl->string('inv', 2);
 		    $tbl->string('unidad', 20);
 		    $tbl->integer('rubro_id')->unsigned();
 		    $tbl->timestamps();
