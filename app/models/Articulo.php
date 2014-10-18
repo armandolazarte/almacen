@@ -15,9 +15,9 @@ class Articulo extends Eloquent
         return $this->hasMany('SalidaArticulo');
     }
     
-//    //Articulo __has_many__ OcArticulo
-//    public function ocArticulos()
-//    {
-//        return $this->hasMany('OcArticulo');
-//    }
+    //Articulo __has_many__ OcArticulo
+    public function ocArticulos()
+    {
+        return $this->hasMany('OcArticulo');
+    }
 }

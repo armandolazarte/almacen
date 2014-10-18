@@ -11,8 +11,8 @@ class OcArticulo extends Eloquent
     }
     
     //OcArticulo __belongs_to__ Articulo
-//    public function articulos()
-//    {
-//        return $this->belongsTo('Articulo');
-//    }
+    public function articulo()
+    {
+        return $this->belongsTo('Articulo');
+    }
 }
