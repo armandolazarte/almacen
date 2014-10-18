@@ -39,8 +39,30 @@ class OcController extends BaseController
         	        $oc->proveedor_id = $proveedor_id;
                     $oc->urg_id = '';
                     $oc->estatus = '';
-                    
                     $oc->save();
+                    
+                    //Insetar artículos @articulos
+                    $articulosExternos = $this->getArticulosExternos($oc_nueva->oc);
+                    foreach ( $articulosExternos as $articuloExterno )
+                    {
+                        $articulo = new Articulo;
+                        $articulo->articulo = $articuloExterno->art.' '.$articuloExterno->esp;
+                        $articulo->unidad = $articuloExterno->unidad;
+                        $articulo->rubro_id = 0;
+                        $articulo->save();
+                        
+                        //Insertar artículos @oc_articulos
+                        $oc_art = new OcArticulo;
+                        $oc_art->oc()->associate($oc);
+                        $oc_art->articulo()->associate($articulo);
+                        $oc_art->art_id = $articuloExterno->art_id;
+                        $oc_art->esp = $articuloExterno->art.' '.$articuloExterno->esp;
+                        $oc_art->cantidad = $articuloExterno->cantidad;
+                        $oc_art->costo = $articuloExterno->costo;
+                        $oc_art->impuesto = $articuloExterno->impuesto;
+                        $oc_art->unidad = $articuloExterno->unidad;
+                        $oc_art->save();
+                    }
                 }
             }
         }
@@ -53,5 +75,19 @@ class OcController extends BaseController
                     ->get();
         return $oc_data;
     }
-
+    
+    public function getArticulosExternos($oc)
+    {
+        //Obtener No. de Requisición a partir de OC
+        $oc = Oc::whereOc($oc)->get(array('req'));
+        $arr_req = $oc->lists('req');
+        $req = $arr_req[0];
+        
+        $articulos = DB::connection('sgf14')->table('tbl_req_art')
+                ->leftJoin('tbl_articulos', 'tbl_articulos.art_id', '=', 'tbl_req_art.art_id')
+                ->where('req', '=', $req)
+                ->get(array('art_count', 'tbl_req_art.art_id', 'art', 'esp', 'cantidad', 'costo', 'impuesto', 'monto', 'unidad'));
+        
+        return $articulos;
+    }
 }
