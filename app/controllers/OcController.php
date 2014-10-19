@@ -55,7 +55,7 @@ class OcController extends BaseController
                         $oc_art = new OcArticulo;
                         $oc_art->oc()->associate($oc);
                         $oc_art->articulo()->associate($articulo);
-                        $oc_art->art_id = $articuloExterno->art_id;
+                        $oc_art->art_count = $articuloExterno->art_count;
                         $oc_art->esp = $articuloExterno->art.' '.$articuloExterno->esp;
                         $oc_art->cantidad = $articuloExterno->cantidad;
                         $oc_art->costo = $articuloExterno->costo;
@@ -86,7 +86,7 @@ class OcController extends BaseController
         $articulos = DB::connection('sgf14')->table('tbl_req_art')
                 ->leftJoin('tbl_articulos', 'tbl_articulos.art_id', '=', 'tbl_req_art.art_id')
                 ->where('req', '=', $req)
-                ->get(array('art_count', 'tbl_req_art.art_id', 'art', 'esp', 'cantidad', 'costo', 'impuesto', 'monto', 'unidad'));
+                ->get(array('art_count', 'art', 'esp', 'cantidad', 'costo', 'impuesto', 'monto', 'unidad'));
         
         return $articulos;
     }

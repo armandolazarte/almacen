@@ -47,7 +47,7 @@ class CrearTablasWarper extends Migration {
 		    $tbl->increments('id');
 		    $tbl->integer('oc_id')->unsigned();
 		    $tbl->integer('articulo_id')->unsigned();
-		    $tbl->integer('art_id')->unsigned();
+		    $tbl->integer('art_count')->unsigned();
 		    $tbl->text('esp');
 		    $tbl->decimal('cantidad', 15, 3)->unsigned();
 		    $tbl->decimal('costo', 15, 3)->unsigned();
