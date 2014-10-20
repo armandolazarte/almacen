@@ -35,7 +35,7 @@ class CrearTablasAlmacen extends Migration {
 		    $tbl->timestamps();
 		});
 		
-		Schema::create('entradas_articulos', function($tbl)
+		Schema::create('entrada_articulos', function($tbl)
 		{
 		    $tbl->increments('id');
 		    $tbl->integer('entrada_id')->unsigned();
@@ -57,7 +57,7 @@ class CrearTablasAlmacen extends Migration {
 		    $tbl->timestamps();
 		});
 		
-		Schema::create('salidas_articulos', function($tbl)
+		Schema::create('salida_articulos', function($tbl)
 		{
 		    $tbl->increments('id');
 		    $tbl->integer('salida_id')->unsigned();
@@ -76,9 +76,9 @@ class CrearTablasAlmacen extends Migration {
 	{
 		Schema::drop('articulos');
 		Schema::drop('entradas');
-		Schema::drop('entradas_articulos');
+		Schema::drop('entrada_articulos');
 		Schema::drop('salidas');
-		Schema::drop('salidas_articulos');
+		Schema::drop('salida_articulos');
 	}
 
 }
