@@ -22,7 +22,7 @@ class Entrada extends Eloquent
     }
     
     //Entrada __belongs_to__ Proveedor
-    public function urg()
+    public function Proveedor()
     {
         return $this->belongsTo('Proveedor');
     }
