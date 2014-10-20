@@ -24,9 +24,10 @@ Route::group(array('prefix' => 'entrada'), function()
     });
     
     //Nueva Entrada a partir de Orden de Compra
+    Route::get('/info/{id?}','EntradaController@info');
     Route::get('/nueva', 'EntradaController@nueva');
     Route::post('/nueva/articulos', 'EntradaController@selArticulos');
-    Route::post('/nueva', 'EntradaController@crearEntrada');
+    Route::post('/crear', 'EntradaController@crearEntrada');
     
 });
 
