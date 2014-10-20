@@ -2,8 +2,10 @@
 
 @section('navegacion')
         <ul class="barra_botones">
-            <li><a class="button_seleccionado" href="/entradas/nueva">Nueva (Sel. OC)</a></li>
-            <li><a class="button_barra" href="#">Consultar</a></li>
+            <li><a class="button_barra" href="/">Inicio</a></li>
+            <li><a class="button_barra" href="/entrada">Entradas</a></li>
+            <li><a class="button_seleccionado" href="{{ action('EntradaController@nueva') }}">Nueva (Sel. OC)</a></li>
+            <li><a class="button_barra" href="{{ action('EntradaController@info') }}">Consultar</a></li>
         </ul>
 @stop
 
