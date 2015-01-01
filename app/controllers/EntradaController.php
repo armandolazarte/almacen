@@ -69,6 +69,9 @@ class EntradaController extends BaseController
             $entradas_articulos->save();
         }
         
+        $oc[0]->estatus = 'Entrada Generada';
+        $oc[0]->save();
+        
         //Mostrar información de entrada (Redirect)
         return Redirect::action('EntradaController@info', array('id' => $entrada->id));
     }

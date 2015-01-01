@@ -25,7 +25,7 @@
             <thead><tr> <th>Orden de Compra</th>  <th>Fecha OC</th> <th>Requisición</th> <!--<th>URG</th>--> <th>Estatus</th> </tr></thead>
             @foreach ($oc_data as $oc)
             <tr>
-                <td> {{ Form::radio('oc', $oc->oc) }}  {{ $oc->oc }}</td> <td>{{ $oc->fecha_oc }}</td> <td>{{ $oc->req }}</td> <!--<td></td>--> <td>Importada</td>
+                <td> {{ Form::radio('oc', $oc->oc) }}  {{ $oc->oc }}</td> <td>{{ $oc->fecha_oc }}</td> <td>{{ $oc->req }}</td> <!--<td></td>--> <td>{{ !empty($oc->estatus) ? $oc->estatus : 'Importada' }}</td>
             </tr>
             @endforeach
         </table>
