@@ -12,6 +12,8 @@ class EntradaController extends BaseController
             $entradas = Entrada::all();
             if ( !$entradas->isEmpty() ) {
                 $data['entradas'] = $entradas;
+            } else {
+                $data['entradas'] = array();
             }
         }
         
