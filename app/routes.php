@@ -31,6 +31,18 @@ Route::group(array('prefix' => 'entrada'), function()
     
 });
 
+Route::group(array('prefix' => 'salida'), function()
+{
+    Route::get('/', function()
+    {
+        return View::make('salida.salida');
+    });
+    Route::get('/info/{id?}','SalidaController@info');
+    Route::get('/nueva', 'SalidaController@nueva');
+    Route::post('/nueva/articulos', 'SalidaController@selArticulos');
+    Route::post('/crear', 'SalidaController@crearSalida');
+});
+
 Route::get('/prueba', function()
 {
      return 'Prueba';

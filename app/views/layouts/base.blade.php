@@ -19,7 +19,7 @@
         <ul class="barra_botones">
             <li><a class="button_seleccionado" href="/">Inicio</a></li>
             <li><a class="button_barra" href="/entrada">Entradas</a></li>
-            <li><a class="button_barra" href="#">Salidas</a></li>
+            <li><a class="button_barra" href="/salida">Salidas</a></li>
             <li><a class="button_barra" href="#">Reportes</a></li>
         </ul>
 @show
