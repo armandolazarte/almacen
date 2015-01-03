@@ -28,7 +28,7 @@ Route::group(array('prefix' => 'entrada'), function()
     Route::get('/nueva', 'EntradaController@nueva');
     Route::post('/nueva/articulos', 'EntradaController@selArticulos');
     Route::post('/crear', 'EntradaController@crearEntrada');
-    
+    Route::get('/formato/{id}', 'EntradaController@formato');
 });
 
 Route::group(array('prefix' => 'salida'), function()
