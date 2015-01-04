@@ -9,8 +9,8 @@ class EntradaSalidaPdf extends Fpdf
     var $ref_tipo;
     var $fecha_oc;
     var $d_proveedor;
-    var $entrada_id;
-    var $fecha_entrada;
+    var $id;
+    var $fecha;
     var $d_urg;
     var $cmt;
     var $usr_id;
@@ -28,8 +28,8 @@ class EntradaSalidaPdf extends Fpdf
         $this->ref = $data['ref'];
         $this->fecha_oc = $data['fecha_oc'];
         $this->d_proveedor = $data['d_proveedor'];
-        $this->entrada_id = $data['entrada_id'];
-        $this->fecha_entrada = $data['fecha_entrada'];
+        $this->id = $data['id'];
+        $this->fecha = $data['fecha'];
         $this->d_urg = $data['d_urg'];
         $this->cmt = $data['cmt'];
         $this->usr_id = $data['usr_id'];
@@ -48,7 +48,7 @@ class EntradaSalidaPdf extends Fpdf
         //Info General
         $this->SetFont('Arial','', 10);
         $this->Ln(5);
-        $this->Cell(190, 5, 'COMPRAS A PROVEEDOR', 0, 1, 'C');
+        $this->Cell(190, 5, $this->titulo, 0, 1, 'C');
         
         $this->Cell(25, 5, 'Referencia', 0, 0, 'L');
         $this->Cell(105, 5, 'Req. ' .$this->req. ' / ' .$this->ref_tipo. ' ' . $this->ref .' ('.$this->fecha_oc.')', 0, 1, 'L');
@@ -69,9 +69,9 @@ class EntradaSalidaPdf extends Fpdf
         $this->Cell(30, 5, utf8_decode('Usuario:'), 0, 2, 'R');
         
         $this->SetXY(170, $this->GetY()-20);
-        $this->Cell(30, 5, $this->entrada_id, 'B', 2, 'C');
-        $this->Cell(30, 5, $this->fecha_entrada, 0, 2, 'C');
-        $this->Cell(30, 5, $this->fecha_entrada, 0, 2, 'C');
+        $this->Cell(30, 5, $this->id, 'B', 2, 'C');
+        $this->Cell(30, 5, $this->fecha, 0, 2, 'C');
+        $this->Cell(30, 5, $this->fecha, 0, 2, 'C');
         $this->Cell(30, 5, $this->usr_id, 0, 1, 'C');
     }
     

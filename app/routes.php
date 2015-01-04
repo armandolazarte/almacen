@@ -41,6 +41,7 @@ Route::group(array('prefix' => 'salida'), function()
     Route::get('/nueva', 'SalidaController@nueva');
     Route::post('/nueva/articulos', 'SalidaController@selArticulos');
     Route::post('/crear', 'SalidaController@crearSalida');
+    Route::get('/formato/{id}', 'SalidaController@formato');
 });
 
 Route::get('/prueba', function()

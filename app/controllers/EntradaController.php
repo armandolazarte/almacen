@@ -92,8 +92,8 @@ class EntradaController extends BaseController
         $data['ref'] = $entrada->ref;
         $data['fecha_oc'] = $oc[0]->fecha_oc;
         $data['d_proveedor'] = $entrada->proveedor->d_proveedor;
-        $data['entrada_id'] = $entrada->id;
-        $data['fecha_entrada'] = $entrada->fecha_entrada;
+        $data['id'] = $id;
+        $data['fecha'] = $entrada->fecha_entrada;
         $data['d_urg'] = $entrada->urg->d_urg;
         $data['cmt'] = $entrada->cmt;
         $data['usr_id'] = $entrada->usr_id;

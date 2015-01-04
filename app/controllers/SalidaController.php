@@ -69,4 +69,61 @@ class SalidaController extends BaseController
         //Mostrar información de salida (Redirect)
         return Redirect::action('SalidaController@info', array('id' => $salida->id));
     }
+    
+    public function formato($id)
+    {
+        $salida = Salida::find($id);
+        $entrada = Entrada::find($salida->entrada_id);
+        if ($entrada->ref_tipo == 'OC') {
+            $oc = Oc::whereOc($entrada->ref)->get();
+        }
+        $articulos = SalidaArticulo::whereSalidaId($id)->get();
+        $artEntrada = EntradaArticulo::whereEntradaId($salida->entrada_id)->get(array('costo', 'impuesto'));
+        
+        $data['tipo_formato'] = 'Salida';
+        $data['req'] = $oc[0]->req;
+        $data['ref_tipo'] = $entrada->ref_tipo;
+        $data['ref'] = $entrada->ref;
+        $data['fecha_oc'] = $oc[0]->fecha_oc;
+        $data['d_proveedor'] = $entrada->proveedor->d_proveedor;
+        $data['id'] = $id;
+        $data['fecha'] = $salida->fecha_salida;
+        $data['d_urg'] = $entrada->urg->d_urg;
+        $data['cmt'] = $salida->cmt;
+        $data['usr_id'] = $entrada->usr_id;
+        $sum_total = 0;
+        
+        $fpdf = new EntradaSalidaPdf($data);
+        $fpdf->AddPage();
+        
+        //Artículos
+        $fpdf->SetFont('Arial','', 10);
+        $fpdf->Cell(20, 5, utf8_decode('Código'), 'TB', 0, 'C');
+        $fpdf->Cell(90, 5, utf8_decode('Descripción'), 'TB', 0, 'C');
+        $fpdf->Cell(20, 5, 'Cantidad', 'TB', 0, 'C');
+        $fpdf->Cell(30, 5, 'Precio Unitario', 'TB', 0, 'C');
+        $fpdf->Cell(30, 5, 'Total', 'TB', 1, 'C');
+        
+        foreach($articulos as $art) {
+            $i = 0;
+            $y_inicial = $fpdf->GetY();
+            $fpdf->SetX(30);
+            $fpdf->MultiCell(90, 4, utf8_decode($art->articulo->articulo), 0, 'L');
+            $y_final = $fpdf->GetY();
+            $h_renglon = $y_final - $y_inicial;
+            
+            $fpdf->SetY($y_inicial);
+            $fpdf->Cell(20, $h_renglon, $art->id, 0, 0, 'C');
+            $fpdf->SetXY(120, $y_inicial);
+            $fpdf->Cell(20, $h_renglon, number_format($art->cantidad), 0, 0, 'C');
+            $fpdf->Cell(30, $h_renglon, number_format($artEntrada[$i]->costo, 2), 0, 0, 'C');
+            $fpdf->Cell(30, $h_renglon, number_format($artEntrada[$i]->costo * $art->cantidad, 2), 0, 2, 'R');
+            
+            $sum_total += $artEntrada[$i]->costo * $art->cantidad;
+            $i++;
+        }
+        $fpdf->Cell(30, 5, number_format($sum_total, 2), 'T', 2, 'R');
+        
+        return View::make($fpdf->Output());
+    }
 }
